@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="DE2_115_Lab">
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115_TOP|Lab_Top:Lab_inst|ControlMemory:CM|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_g4d1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

@@ -1,0 +1,141 @@
+第1关
+
+bool SQ_IsEmpty(SeqQueue* sq)
+// 判断队列是否为空，为空返回true，否则返回false。
+{
+    // 请在Begin-End之间补充代码，完成队列是否为空的判断。
+    /********** Begin *********/
+    if(sq->front == sq->rear){
+        return true;
+    }else{
+        return false;
+    }
+    /********** End **********/
+}
+
+bool SQ_IsFull(SeqQueue* sq)
+// 判断队列是否为满。为满返回true,否则返回false。
+{
+    // 请在Begin-End之间补充代码，完成队列是否为满的判断。
+    /********** Begin *********/
+    if(sq->front == (sq->rear+1)){
+        return true;
+    }else if(sq->front == 0&&sq->rear == (sq->max-1)){
+        return true;
+    }else{
+        return false;
+    }
+    /********** End **********/
+}
+
+int SQ_Length(SeqQueue* sq)
+// 队列长度。
+{
+    // 请在Begin-End之间补充代码，获取队列长度。
+    /********** Begin *********/
+    if(sq->rear>sq->front){
+        return (sq->rear-sq->front);
+    }else {
+        return (sq->max-sq->front+sq->rear);
+    }
+    /********** End **********/
+}
+
+bool SQ_In(SeqQueue* sq, T x)
+// 将x入队。若入队失败(队列满)，则返回false，否则返回true。
+{
+    // 请在Begin-End之间补充代码，将 x 入队。
+    /********** Begin *********/
+    if(SQ_IsFull(sq)){
+        return false;
+    }else {
+        sq->data[sq->rear] = x;
+        sq->rear++;
+        if(sq->rear == sq->max){
+            sq->rear=0;
+        }
+    }
+    /********** End **********/
+}
+
+bool SQ_Out(SeqQueue* sq, T& item)
+// 从队列sq出队一个元素，返回时item为出队的元素的值。若出队成功(队列不为空)，则返回true，否则(队列空)，返回false，此时item不会返回有效值。
+{
+    // 请在Begin-End之间补充代码，完成元素出队操作。
+    /********** Begin *********/
+    if(SQ_IsEmpty(sq)){
+        return false;
+    }else {
+        item=sq->data[sq->front];
+        sq->front++;
+        if(sq->front == sq->max){
+            sq->front=0;
+        }
+    }
+    /********** End **********/
+}
+
+
+第2关
+
+bool CLQ_IsEmpty(LNode* rear)
+// 判断队列是否为空。
+{
+    // 请在Begin-End之间补充代码，完成队列是否为空的判断。
+    /********** Begin *********/
+    if(rear->next == rear){
+        rear->data=0;
+        return true;
+    }else{
+        return false;
+    }
+    /********** End **********/
+}
+
+int CLQ_Length(LNode* rear)
+// 返回队列长度，rear指向尾结点。
+{
+    // 请在Begin-End之间补充代码，获取队列长度。
+    /********** Begin *********/
+    int a = 0;
+	LNode* p = rear->next;
+	while(p != rear){
+		a++;
+		p = p->next;
+	}
+	return a;
+    /********** End **********/
+}
+
+void CLQ_In(LNode* & rear, T x)
+// 入队列, 新结点加入链表尾部。rear指向尾结点。
+{
+    // 请在Begin-End之间补充代码，完成新结点入队操作。
+    /********** Begin *********/
+    LNode *s =(LNode*)malloc(sizeof(LNode));
+	LNode *t;
+	t = rear->next;
+	s->data = x;
+	rear->next =s;
+	rear =s;
+	rear->next = t;
+    /********** End **********/
+}
+
+bool CLQ_Out(LNode* & rear, T& item)
+// 出队列。空队列时，返回值为false。rear指向尾结点。
+{
+    // 请在Begin-End之间补充代码，完成结点出队操作。
+    /********** Begin *********/
+    if(CLQ_IsEmpty(rear)){
+        return false;
+    }else {
+        LNode *t;
+        item = t->data;
+	    t = rear->next;
+	    rear->next = t->next;
+	    free(t);
+	    return true;
+    }
+    /********** End **********/
+}

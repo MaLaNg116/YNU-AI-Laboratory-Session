@@ -1,0 +1,18 @@
+int binarySearch(int array[], int len, int target) {
+	/********* Begin *********/
+    int low,high,mid;
+    low=0;
+    high=len-1;
+    while(low<=high){
+        mid=(low+high)/2;
+        if(array[mid]==target){
+            return mid;
+        }else if(array[mid]>target){
+            low=mid+1;
+        }else{
+            high=mid-1;
+        }
+    }
+    return -1;
+	/********* End *********/
+}

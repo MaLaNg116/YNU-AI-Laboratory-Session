@@ -1,0 +1,12 @@
+[
+  {
+    "username": "admin",
+    "password": "password",
+    "home": "S:/Python/ComputerNetwork/admin"
+  },
+  {
+    "username": "lihai_std",
+    "password": "std",
+    "home": "S:/Python/ComputerNetwork/lihai_std"
+  }
+]

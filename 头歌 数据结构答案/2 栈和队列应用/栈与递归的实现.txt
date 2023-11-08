@@ -1,0 +1,19 @@
+第1关
+
+B
+
+第2关
+
+//在此补全函数,计算n!
+int fun(int n){
+	SeqStack* ss=SS_Create(Max);  //创建一个空栈
+	ss->top=0;
+	/*****BEGIN*****/
+    int a=1,item=1;
+    if(n<2){
+        return 1;
+    }else{
+       return n*fun(n-1);
+    }
+    /******END******/
+}

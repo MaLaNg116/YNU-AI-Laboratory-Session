@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="DE2_115_Lab">
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115_TOP|Lab_Top:Lab_inst|ram_cache:DATA1|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_t1i1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115_TOP|Lab_Top:Lab_inst|ram_cache:DATA3|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_t1i1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115_TOP|Lab_Top:Lab_inst|ram_tag:TAG_inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_uuh1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115_TOP|Lab_Top:Lab_inst|ram_cache:DATA0|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_t1i1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115_TOP|Lab_Top:Lab_inst|ram_cache:DATA2|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_t1i1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|DE2_115_TOP|Lab_Top:Lab_inst|ram_mm:ram_mm_inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_87n1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

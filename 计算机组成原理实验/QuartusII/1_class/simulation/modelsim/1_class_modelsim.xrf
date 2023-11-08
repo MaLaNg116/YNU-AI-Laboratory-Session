@@ -1,0 +1,9 @@
+vendor_name = ModelSim
+source_file = 1, S:/Quartus_II_Workspace/1_class/adder.bdf
+source_file = 1, S:/Quartus_II_Workspace/1_class/adder.vwf
+source_file = 1, S:/Quartus_II_Workspace/1_class/db/1_class.cbx.xml
+design_name = adder
+instance = comp, \co~output , co~output, adder, 1
+instance = comp, \s~output , s~output, adder, 1
+instance = comp, \a~input , a~input, adder, 1
+instance = comp, \b~input , b~input, adder, 1

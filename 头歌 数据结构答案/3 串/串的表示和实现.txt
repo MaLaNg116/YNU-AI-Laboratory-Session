@@ -1,0 +1,44 @@
+第1关
+// 创建数组，内容为"this is my string"
+    // 请在下方填写你的代码
+    /******** begin *******/
+    char str[100]="this is my string";
+    printf("%s",str);
+
+    /******* end *********/
+
+第2关
+
+/**** 请在下方补全代码 ************/
+ /************* begin *********************/
+    a1 = (char*)realloc(a1, (lengthA1+lengthA2)*sizeof(char));
+    strcat(a1,a2);
+ 
+ 
+ /************* end **********************/
+
+
+第3关
+
+/** 请在此处填写你的代码 ****/
+/************************** begin ******************/
+    for(int j=0;j < num ;j++){
+        for (int i = 0; i < linkNum; i++) {
+            if(j*linkNum+i<length)
+            {
+                temp->a[i]=str[j*linkNum+i];
+            }
+            else{
+                temp->a[i]='#';
+            }
+            if(j*linkNum+i<length)
+            {
+                link* newlink=(link*)malloc(sizeof(link));
+                newlink->next=NULL;
+                temp->next=newlink;
+                temp=newlink; 
+            }
+        }
+    }
+
+/*************************** end *******************/

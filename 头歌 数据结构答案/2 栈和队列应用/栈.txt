@@ -1,0 +1,147 @@
+第1关
+
+/*判断栈是否为满*/
+bool SS_IsFull(SeqStack* ss)
+{
+	/*请在BEGIN和END之间实现你的代码*/
+    /*****BEGIN*****/
+    if(ss->top == ss->max-1 ) {
+        return true;
+    }else {
+        return false;
+    }
+
+    /******END******/
+}
+
+/*判断栈是否为空*/
+bool SS_IsEmpty(SeqStack* ss)
+{
+	/*请在BEGIN和END之间实现你的代码*/
+    /*****BEGIN*****/
+    if(ss->top == -1 ) {
+        return true;
+    }else {
+        return false;
+    }
+
+    /******END******/
+}
+
+/*获取栈元素个数*/
+int SS_Length(SeqStack* ss)
+{
+	/*请在BEGIN和END之间实现你的代码*/
+    /*****BEGIN*****/
+    if(SS_IsFull(ss)) {
+        return ss->max;
+    }else if(SS_IsEmpty(ss)) {
+        return 0;
+    }else {
+        return ss->top+1;
+    }
+    /******END******/
+}
+
+/*将x进栈,满栈则无法进栈(返回false)*/
+bool SS_Push(SeqStack* ss, T x)
+{
+	/*请在BEGIN和END之间实现你的代码*/
+    /*****BEGIN*****/
+    if(SS_IsFull(ss)) {
+        return false;
+    }else {
+        ss->top++;
+        ss->data[ss->top]=x;
+        return true;
+    }
+    /******END******/
+}
+
+/*出栈，出栈的元素放入item,空栈则返回false*/
+bool SS_Pop(SeqStack* ss, T &item)
+{
+	/*请在BEGIN和END之间实现你的代码*/
+    /*****BEGIN*****/
+    if(SS_IsEmpty(ss)) {
+        return false;
+    }else {
+        item = ss->data[ss->top];
+        ss->top--;
+    }
+
+    /******END******/
+}
+
+
+
+
+第2关
+
+
+/*判断栈是否为空*/
+bool LS_IsEmpty(LinkStack* ls)
+{
+    // 请在这里补充代码，完成本关任务
+    /********** Begin *********/
+    if(ls->top == NULL){
+        return true;
+    }else {
+        return false;
+    }
+    /********** End **********/
+}
+
+/*获取栈的长度*/
+int LS_Length(LinkStack* ls)
+{
+    // 请在这里补充代码，完成本关任务
+    /********** Begin *********/
+    if(LS_IsEmpty(ls)){
+        return 0;
+    }else {
+        return ls->len;
+    }
+    /********** End **********/
+}
+
+/*将x进栈*/
+void LS_Push(LinkStack* ls, T x)
+{
+    // 请在这里补充代码，完成本关任务
+    /********** Begin *********/
+    LNode* node=(LNode*)malloc(sizeof(LNode));
+    node->data=x;
+    node->next=ls->top;
+    ls->top=node;
+    ls->len++;
+    /********** End **********/
+}
+
+/*出栈。出栈元素放入item；如果空栈，将返回false*/
+bool LS_Pop(LinkStack* ls, T& item)
+{
+    // 请在这里补充代码，完成本关任务
+    /********** Begin *********/
+    if(LS_IsEmpty(ls)){
+        return false;
+    }else {
+        item = ls->top->data;
+        ls->top = ls->top->next;
+        ls->len--;
+    }
+    /********** End **********/
+}
+
+/*读栈顶元素放入item。如果空栈，将返回false*/
+bool LS_Top(LinkStack* ls, T& item)
+{
+    // 请在这里补充代码，完成本关任务
+    /********** Begin *********/
+    if(LS_IsEmpty(ls)){
+        return false;
+    }else {
+        item = ls->top->data;
+    }
+    /********** End **********/
+}

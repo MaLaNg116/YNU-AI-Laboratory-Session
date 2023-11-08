@@ -1,0 +1,11 @@
+//依次为各维的下标值，若各下标合法，则e被赋值为A的相应的元素值
+    /*********** begin ****************/
+    va_list ap;
+    Status result;
+    int off;
+    va_start(ap,A);
+    if((result=Locate(A,ap,&off))==OVERFLOW) 
+        return result;
+    *e=*(A.base+off);
+    return OK;
+    /********** end ******************/

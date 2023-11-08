@@ -1,0 +1,124 @@
+第1关
+
+C A B
+
+第2关
+
+void DirecInsSort(int* a, int n)
+{
+    int i, k;
+    for (i=1; i<n; i++) {
+        // 请在此添加代码，补全函数DirecInsSort
+        /********** Begin *********/
+        for (k=i;k>0;k--){
+            if(a[k]<a[k-1]){
+                int temp=a[k];
+                a[k]=a[k-1];
+                a[k-1]=temp;
+            }
+        }
+        /********** End **********/
+    }
+}
+
+
+第3关
+
+void QuickSort(int a[], int low, int high){
+    if(low<high){
+        int pivotpos = Partition(a,low,high);
+        // 请在此添加代码，补全函数DirecInsSort
+        /********** Begin *********/
+        int i,j;
+        i=low; j=high;
+        int temp=a[i];
+        while(i!=j){
+            while(j>i&&a[j]>=temp){
+                j--;
+            }
+            a[i]=a[j];
+            while(i<j&&a[i]<=temp){
+                i++;
+            }
+            a[j]=a[i];
+        }
+        a[i]=temp;
+        QuickSort(a,low,i-1);
+        QuickSort(a,i+1,high);
+        /********** End **********/
+    }
+}
+
+
+第4关
+
+void SimpSelSort(int a[], int n){
+    // 请在此添加代码，补全函数SimpSelSort
+    /********** Begin *********/
+    int i=0,j=0;
+    int mini_index=0;
+    int temp=0;
+
+    for(i=0;i<n-1;i++){
+        mini_index = i;
+        for(j=i+1;j<n;j++){
+            if(a[mini_index]>a[j]){
+                mini_index = j;
+            }
+        }
+
+        if(mini_index != i){
+            temp=a[i];
+            a[i]=a[mini_index];
+            a[mini_index]=temp;
+        }
+    }
+
+    
+
+    /********** End **********/
+}
+
+
+
+第5关
+
+void MergeSort(int a[], int low, int high)
+{
+    if(low<high){
+        // 请在此添加代码，补全函数MergeSort
+        /********** Begin *********/
+        int mid=(low+high)/2;
+        MergeSort(a,low,mid);
+        MergeSort(a,mid+1,high);
+        Merge(a,low,mid,high);
+        /********** End **********/
+    }
+}
+
+
+第6关
+
+void RadixSort(int a[], int length, int k)
+{
+    struct node r[MAX_LENGTH]; // 创建静态链表保存数据
+    r[0].next = 0; // 初始化链表为空 
+    int i;
+    for(i=0; i<length; i++)
+    {
+        r[i].next = i+1;
+        r[i+1].data = a[i];
+    }
+    r[i].next = 0; // 链表最后一个元素指向0，表示链表结束 
+    // 请在此添加代码，补全函数RadixSort
+    // 对关键字按照从低位到高位进行排序
+    /********** Begin *********/
+   for(i=1; i<=k; i++) distri_collect(r, length, i);
+    /********** End **********/
+    int p = r[0].next;
+    for(i=0; i<length && p!=0; i++)
+    {
+        a[i] = r[p].data;
+        p = r[p].next;
+    }
+}

@@ -1,0 +1,88 @@
+#UDPClient
+from socket import *
+serverName = "hostname"
+serverPort = 12001
+clientSocket = socket(AF_INET, SOCK_DGRAM)
+message = input("Input lowercase sentence:")
+clientSocket.sendto(message.encode(),(serverName, serverPort))
+modifiedMessage, serverAddress = clientSocket.recvfrom(2048)
+print(modifiedMessage.decode())
+clientSocket.close( )
+
+#UDPServer
+from socket import *
+serverPort = 12001
+serverSocket = socket(AF_INET, SOCK_DGRAM)
+serverSocket.bind(('', serverPort))
+print("The server is ready to receive")
+while True:
+    message, clientAddress = serverSocket.recvfrom(2048)
+    modifiedMessage = message.decode.upper()
+    serverSocket.sendto(modifiedMessage, clientAddress)
+	
+#TCPClient
+from socket import *
+serverName = 'hostname'
+serverPort = 12000
+clientSocket = socket(AF_INET, SOCK_STREAM)
+clientSocket.connect((serverName,serverPort))
+sentence = input('Input lowercase sentence:')
+clientSocket.send(sentence.encode())
+modifiedSentence = clientSocket.recv(1024)
+print('From Server:', modifiedSentence.decode())
+clientSocket.close()
+
+#TCPServer
+from socket import *
+serverPort = 12000
+serverSocket = socket(AF_INET,SOCK_STREAM)
+serverSocket.bind(('',serverPort))
+serverSocket.listen(1)
+print('The server is ready to receive')
+while True:
+     connectionSocket, addr = serverSocket.accept()
+     sentence = connectionSocket.recv(1024)
+     capitalizedSentence = sentence.upper()
+     connectionSocket.send(capitalizedSentence)
+     connectionSocket.close()
+
+
+
+
+
+#import socket module
+from socket import *
+import sys # In order to terminate the program
+serverSocket = socket(AF_INET, SOCK_STREAM)
+#Prepare a sever socket
+#Fill in start
+
+#Fill in end
+while True:
+ #Establish the connection
+ print('Ready to serve...')
+ connectionSocket, addr = #Fill in start #Fill in end 
+ try:
+ message = #Fill in start #Fill in end 
+ filename = message.split()[1] 
+ f = open(filename[1:],encoding='utf-8') 
+ outputdata = #Fill in start #Fill in end 
+ #Send one HTTP header line into socket
+ #Fill in start
+ 
+ #Fill in end 
+ #Send the content of the requested file to the client
+ for i in range(0, len(outputdata)): 
+ connectionSocket.send(outputdata[i].encode())
+ connectionSocket.send("\r\n".encode())
+ 
+ connectionSocket.close()
+ except IOError:
+ #Send response message for file not found
+ #Fill in start 
+ #Fill in end
+ #Close client socket
+ #Fill in start
+ #Fill in end 
+serverSocket.close()
+sys.exit()#Terminate the program after sending the corresponding data 

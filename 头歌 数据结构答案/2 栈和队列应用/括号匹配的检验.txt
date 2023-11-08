@@ -1,0 +1,35 @@
+//该函数实现括号匹配判断
+int matching(char* str){
+	SeqStack* ss=SS_Create(Max);  //创建一个空栈
+	
+	 /*****BEGIN*****/
+     T item='s';
+     while(*str){
+         if(ss->top == Max-1){
+             exit(-1);
+         }else if(*str == '{'||*str == '['||*str == '('||*str == ')'||*str == ']'||*str == '}'){
+             if(SS_Length(ss) == 0){
+                 SS_Push(ss, *str);
+             }
+             else if(ss->data[ss->top] == '(' && *str == ')'){
+                 SS_Pop(ss, item);
+             }else if(ss->data[ss->top] == '[' && *str == ']'){
+                 SS_Pop(ss, item);
+             }else if(ss->data[ss->top] == '{' && *str == '}'){
+                 SS_Pop(ss, item);
+             }else{
+                 SS_Push(ss, *str);
+             }
+         }
+         *str++;
+     }
+    if(ss->top == -1){
+        return 1;
+    }else{
+        return 0;
+    }
+
+    /******END******/
+	
+	SS_Free(ss);
+}

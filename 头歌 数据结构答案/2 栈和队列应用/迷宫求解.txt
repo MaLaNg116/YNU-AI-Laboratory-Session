@@ -1,0 +1,32 @@
+//得到迷宫路径,maze为迷宫地图,1表示通路,0表示墙
+void GetPath(SeqStack* ss,int maze[][6]){
+	
+	/****begin*******/
+	if(SS_IsFull(ss)){
+        exit(0);
+    }else {
+        for(int i=0;i<6;i++){
+            for(int j=0;j<6;j++){
+                for(int k=0;k<36;k++){
+                    if(maze[i][j] == 1 && ss->top == -1){
+                        SS_Push(ss,i,j);
+                    }if(ss->row[ss->top] == 5 && ss->col[ss->top] == 5){
+                        k=36;
+                        i=6;
+                        j=6;
+                    }else if(maze[i][j+1] == 1){
+                        SS_Push(ss,i,j+1);
+                        j++;
+                    }else if(maze[i+1][j] == 1){
+                        SS_Push(ss,i+1,j);
+                        i++;
+                    }
+
+                }
+            }
+        }
+    }
+	
+	/*******end******/
+	SS_Print(ss);
+}

@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Nov 09 18:40:51 2022
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : DE2_115_Lab
+Top-level Entity Name : DE2_115_TOP
+Family : Cyclone IV E
+Total logic elements : 880
+    Total combinational functions : 817
+    Dedicated logic registers : 497
+Total registers : 497
+Total pins : 487
+Total virtual pins : 0
+Total memory bits : 1,176
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

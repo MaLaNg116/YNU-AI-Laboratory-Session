@@ -1,0 +1,17 @@
+//该函数实现十进制向八进制转换,a为待转为八进制的数
+void decimal_octal(int a){
+	SeqStack* ss=SS_Create(Max);  //创建一个空栈
+	
+	 /*****BEGIN*****/
+     int count=0;
+     while(a > 0){
+         int i;
+         i = a%8;
+         SS_Push(ss,i);
+         a = (a-i)/8;
+         count++;
+     }
+    /******END******/
+	SS_Print(ss);
+	SS_Free(ss);
+}

@@ -1,0 +1,112 @@
+第1关
+
+void createBinarySortTree(BinaryTree tree, int array[], int start, int end) {
+	/********* Begin *********/
+	int rootIndex = start ;
+    //对树根赋值
+    tree->data = array[rootIndex];
+	/********* End *********/
+	tree->index = rootIndex;
+	//当左子树中元素个数大于1
+	if (start < rootIndex) {
+		//给左子树分配空间
+		tree->leftChild = (BinaryTree)malloc(sizeof(BinaryNode));
+		//递归调用，生成左子树
+		createBinarySortTree(tree->leftChild, array, start, rootIndex - 1);
+	}
+	else {
+		//左子树中已经没有元素
+		tree->leftChild = NULL;
+	}
+	//当右子树中元素个数大于1
+	if (rootIndex  < end) {
+		//给右子树分配空间
+		tree->rightChild = (BinaryTree)malloc(sizeof(BinaryNode));
+		//递归调用，生成右子树
+		createBinarySortTree(tree->rightChild, array,  rootIndex + 1, end);
+	}
+	else {
+		//右子树中已经没有元素
+		tree->rightChild = NULL;
+	}
+	return;
+}
+
+
+第2关
+
+//创建二叉排序树
+//tree：待构造的二叉树
+//target：待插入的元素
+//index：待插入元素在数组中的索引
+int binaryTreeInsert(BinaryTree tree, int target, int index) {	
+	if (tree->data == -1) {
+		tree->data = target;
+		tree->index = index;
+		return -1;
+	}
+	else {
+		if (target > tree->data) {
+			//待插入元素大于当前子树的根节点，进入右子树
+			if (tree->rightChild == NULL) {
+				//如果右子树不存在，构建右子树
+				tree->rightChild = (BinaryTree)malloc(sizeof(BinaryNode));
+				//初始化右子树
+				initBinaryTree(tree->rightChild);
+			}
+			//递归插入右子树中
+			return binaryTreeInsert(tree->rightChild, target, index);
+		}
+		else if (target < tree->data ){
+			/********* Begin *********/			
+			if(tree->leftChild == NULL ){
+                tree->leftChild = (BinaryTree)malloc(sizeof(BinaryNode));
+                initBinaryTree(tree->leftChild);
+            }
+            return binaryTreeInsert(tree->leftChild,target,index);
+			/********* End *********/
+		}
+		else {
+			/********* Begin *********/
+			return tree->index;
+
+			/********* End *********/
+		}
+	}
+}
+
+
+
+第3关
+
+//删除左右子树都不为空的节点
+void deleteNotEmpty(BinaryTree targetNode, BinaryTree parentNode, int target) {
+	//前驱节点的父节点的初始值
+	BinaryTree preParentNode = targetNode;
+	//找到前驱节点以及前驱节点的父节点
+	BinaryTree preNode = searchPreNode(targetNode, &preParentNode);
+	//先删除前驱节点和整棵树的连接
+	deleteOneEmpty(preNode, preParentNode, preNode->data);
+	//然后用前驱节点替代当前节点
+	//替代的第一步是更换父节点的指针
+	//替代的第二步是将子节点挂到前驱节点上
+	//代码未给出，作为练习
+	/********* Begin *********/
+    targetNode->data = preNode->data;
+	/********* End *********/
+}
+
+
+第4关
+
+//右旋转
+//对以p为根结点的树右旋，同时使得p指针指向新的根结点
+void rightRotate(BinaryTree* p)
+{
+    /********* Begin *********/
+    BinaryTree leftNode = (*p)->leftChild;
+    (*p)->leftChild = leftNode->rightChild;
+    leftNode->rightChild =  *p;
+    *p = leftNode;
+    /********* End *********/
+}

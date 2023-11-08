@@ -1,0 +1,65 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'JTCK'
+Slack : -4.257
+TNS   : -472.400
+
+Type  : Slow 1200mV 85C Model Hold 'JTCK'
+Slack : 0.377
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'JTCK'
+Slack : -0.462
+TNS   : -1.848
+
+Type  : Slow 1200mV 85C Model Removal 'JTCK'
+Slack : 0.982
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'JTCK'
+Slack : -3.000
+TNS   : -235.585
+
+Type  : Slow 1200mV 0C Model Setup 'JTCK'
+Slack : -3.755
+TNS   : -414.946
+
+Type  : Slow 1200mV 0C Model Hold 'JTCK'
+Slack : 0.353
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'JTCK'
+Slack : -0.320
+TNS   : -1.280
+
+Type  : Slow 1200mV 0C Model Removal 'JTCK'
+Slack : 0.888
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'JTCK'
+Slack : -3.000
+TNS   : -235.585
+
+Type  : Fast 1200mV 0C Model Setup 'JTCK'
+Slack : -2.408
+TNS   : -265.885
+
+Type  : Fast 1200mV 0C Model Hold 'JTCK'
+Slack : 0.113
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'JTCK'
+Slack : 0.270
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'JTCK'
+Slack : 0.477
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'JTCK'
+Slack : -3.000
+TNS   : -272.004
+
+------------------------------------------------------------

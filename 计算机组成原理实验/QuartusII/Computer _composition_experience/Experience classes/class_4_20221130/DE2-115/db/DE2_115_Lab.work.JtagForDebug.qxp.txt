@@ -1,0 +1,46 @@
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
++---------------------------------------------------------------------+
+; Quartus II QXP Design File                                          ;
++------------------+--------------------------------------------------+
+; Field            ; Value                                            ;
++------------------+--------------------------------------------------+
+; Entity           ; JtagForDebug                                     ;
+; Case Sensitive   ;                                                  ;
+; QXP Source       ; JTAG/JtagForDebug.qxp                            ;
+; Software Version ; Version 12.0 Build 178 05/31/2012 SJ Web Edition ;
+; Date             ; Thu Jul 11 15:41:46 2013                         ;
+; Contents         ; Netlist Only                                     ;
+; Family           ; EP4CE115F29C7                                    ;
+; Device           ; CYCLONEIVE6F780C7                                ;
++------------------+--------------------------------------------------+
+
++----------------------------------------------+
+; Boundary Ports                               ;
++---------------------+--------+---------------+
+; Port Name           ; Type   ; Default Value ;
++---------------------+--------+---------------+
+; iTCK                ; input  ; 0             ;
+; iTMS                ; input  ; 0             ;
+; iTDI                ; input  ; 0             ;
+; oTDO                ; output ; 0             ;
+; iBSR_ScanOut [10:0] ; input  ; 00000000000   ;
+; oBSR_Select [10:0]  ; output ; 00000000000   ;
+; oShiftDR            ; output ; 0             ;
+; oCaptureDR          ; output ; 0             ;
+; oUpdateDR           ; output ; 0             ;
+; oMode               ; output ; 0             ;
+; oJTAG_Reset         ; output ; 0             ;
++---------------------+--------+---------------+

@@ -1,0 +1,173 @@
+第1关
+BBA
+
+第2关
+
+bool SL_InsAt(SeqList* slist, int i, T x)
+// 在顺序表的位置i插入结点x, 插入d[i]之前。
+// i 的有效范围[0,plist->len]。
+{
+    // 请在下面的Begin-End之间补充代码，插入结点。
+    /********** Begin *********/
+    if(i<0||i>slist->len) {
+        printf("SL_InsAt(): location error when inserting elements of the slist!\n");
+        SL_Free(slist);
+        return false;
+    }
+    else {
+        for(int j=0;j<slist->len-i;j++) {
+            slist->data[slist->len-j]=slist->data[slist->len-j-1];
+        }
+        slist->data[i]=x;
+        slist->len++;
+        return true;
+    }
+
+
+    /********** End **********/
+}
+
+T SL_DelAt(SeqList* slist, int i)
+// 删除顺序表plist的第i号结点。
+// i的有效范围应在[0,plist->len)内，否则会产生异常或错误。
+// 返回被删除的数据元素的值。
+{
+    // 在下面的Begin-End之间补充代码，删除第i号结点。
+    /********** Begin *********/
+    if(i<0||i>=slist->len) {
+        printf("SL_DelAt(): location error when deleting elements of the slist!\n");
+        SL_Free(slist);
+        exit(0);	
+    }
+    else {
+        T p=slist->data[i];
+        for(int j=0;j<slist->len-i;j++) {
+                slist->data[i+j]=slist->data[i+j+1];
+            }
+            slist->len--;
+            return p;
+        }
+    /********** End **********/
+}
+
+int SL_DelValue(SeqList* slist, T x)
+// 删除第一个值为x的结点。
+// 存在值为x的结点则返回结点编号, 未找到返回－1。
+{
+    // 在下面的Begin-End之间补充代码，删除第一个值为 x 的结点。
+    /********** Begin *********/
+    for(int i=0;i<slist->len;i++) {
+        if(slist->data[i]==x) {
+            SL_DelAt(slist,i);
+            return i;
+        }
+    }
+    return -1;
+    /********** End **********/
+}
+
+
+第3关
+bool LL_InsAfter(LinkList* llist, T x)
+// 在线性表的当前位置之后插入数据元素x。空表允许插入。当前位置指针将指向新结点。
+// 若插入失败，返回false，否则返回true。
+{
+    // 请在Begin-End之间补充代码，实现结点插入。
+    /********** Begin *********/
+    LinkNode *newNode=(LinkNode*)malloc(sizeof(LinkNode));
+    if (newNode==NULL) return false;
+
+    newNode->data=x;
+
+    if(llist->len==0) {
+        newNode->next=NULL;
+        llist->front = llist->rear = newNode;
+    }
+    else {
+        newNode->next = llist->curr->next;
+        llist->curr->next=newNode;
+        llist->pre = llist->curr;
+        llist->position++;
+    }
+
+    /* 增加链表的大小*/
+    llist->len++;
+    /* 新插入的结点为当前结点*/
+    llist->curr = newNode;
+    return true;
+
+    /********** End **********/
+}
+
+
+第4关
+
+// 请在下面的Begin-End之间补充代码，插入结点。
+    /********** Begin *********/
+        prev->next = cur;
+        prev = prev->next;
+
+    /********** End **********/
+
+
+第5关
+
+// 请在下面的Begin-End之间补充代码，完成对结点的删除。
+        /********** Begin *********/
+        if(node->next->next==list){
+            free(node->next);
+            node->next=list;
+        }else {
+             free(node->next);
+             node->next=node->next->next;
+        }
+       
+
+
+            
+        /********** End **********/
+
+
+第6关
+
+for (int i = 1; i <= 5; i++) {
+
+        // 请在下面的Begin-End之间补充代码，插入结点，其中结点数据为data[i]。
+        /********** Begin *********/
+        struct line * c=(line*)malloc(sizeof(line));
+        c->data =data[i];
+        c->prior = NULL;
+        c->next = NULL;
+     
+        list->next = c;
+        c->prior = list;
+        list = list->next;
+    
+        /********** End **********/
+    }
+    //返回新创建的链表
+
+第7关
+
+while(pa && pb){
+        x = pa->expn-pb->expn;
+        //判断pa 所指结点的指数与pb 所指结点指数的大小关系
+        if(x<0){
+            //如果小，则找去 qa 结点到Lc 上
+            pc = pa;
+            len++;
+            pa = pa->next;
+        }
+        //如果相等，则判断两结点的系数和是否为0
+        else if(x == 0){
+            // 请在下面的Begin-End之间补充代码，完成一元多项式的相加。
+            /********** Begin *********/
+            int a;
+            a = pa->coef+pb->coef;
+            pa->coef = a;
+            pc=pa;
+            pa = pa->next;
+            pb = pb->next;
+
+            /********** End **********/
+        }

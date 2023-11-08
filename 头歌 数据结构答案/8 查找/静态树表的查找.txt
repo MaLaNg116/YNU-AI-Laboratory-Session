@@ -1,0 +1,23 @@
+//利用静态树表查找元素
+//tree: 静态树表
+//target: 待查找的元素
+int search(BinaryTree tree, int target) {
+	if (tree == NULL) {
+		//走到了空节点，返回-1表示目标元素不存在
+		return -1;
+	}
+	/********* Begin *********/
+	if (tree->data == target) {
+        //当前树的根节点的值等于target，返回根节点在数组中的索引
+        return tree->index;
+    }
+    else if (tree->data < target) {
+        //target较大，走右子树递归搜索
+        return search(tree->rightChild, target);
+    }
+    else {
+        //target较小，走左子树递归搜索
+        return search(tree->leftChild, target);
+    }
+	/********* End *********/
+}

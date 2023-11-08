@@ -1,0 +1,56 @@
+第1关
+
+ /** 请在此处填写代码 **/
+    /********** Begin *********/
+    int i,j;
+    for(i=0;i<strlen(B);i++){
+        for(j=0;j<strlen(A);j++){
+            if(B[i+j] == A[j]){
+                if(j == strlen(A)-1){
+                    return (i+1);
+                }else{
+                    j=j;
+                }
+            }else{
+                j=strlen(A);
+            }
+        }
+    }
+
+    /********** End **********/
+
+
+
+第2关
+
+int KMP(char * S,char * T){
+/** 实现KMP算法， 若匹配返回匹配字符串长度，若不匹配返回 -1 **/
+
+/*************** begin *******************/
+int k,l;
+    for(k=0;k<strlen(S);k++){
+        for(l=0;l<strlen(T);l++){
+            if(S[k+l] == T[l]){
+                if(l == strlen(T)-1){
+                    return (k+1);
+                }else{
+                    l=l;
+                }
+            }else{
+                l=strlen(T);
+            }
+        }
+    }
+    return -1;
+
+
+
+
+
+
+
+
+
+
+/*************** end *********************/
+}

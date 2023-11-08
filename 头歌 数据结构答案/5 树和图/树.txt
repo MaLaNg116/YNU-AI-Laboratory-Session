@@ -1,0 +1,259 @@
+第1关
+
+AABCAD
+
+第2关
+
+ACDABAC
+
+第3关
+
+/********** Begin **********/
+    if(b != NULL)
+    {
+        printf("%c",b->data);
+        if(b->lchild != NULL || b->rchild != NULL)
+        {
+            printf("(");
+            DispBTree(b->lchild);
+            if(b->rchild != NULL) printf(",");
+            DispBTree(b->rchild);
+            printf(")");
+        }
+    }
+
+    /********** End **********/   
+
+
+第4关
+
+//先序遍历
+void PreOrder(BTNode *b)
+{
+    /********** Begin **********/
+    if(b==NULL)return ;
+    printf("%c",b->data);
+    PreOrder(b->lchild);
+    PreOrder(b->rchild);
+    /********** End**********/
+}
+//中序遍历
+void InOrder(BTNode *b)
+{
+    /********** Begin **********/
+    if(b==NULL)return ;
+    InOrder(b->lchild);
+    printf("%c",b->data);
+    InOrder(b->rchild);
+    /********** End **********/
+}
+//后续遍历
+void PostOrder(BTNode *b)
+{
+    /********** Begin **********/
+    if(b==NULL)return ;
+    PostOrder(b->lchild);
+    PostOrder(b->rchild);
+    printf("%c",b->data);
+    /********** End **********/
+}
+
+
+第5关
+
+//由先序序列和中序序列构造二叉树
+BTNode *CreateBT1(char *pre,char *in,int n)
+{
+    //pre存放先序序列，in存放中序序列，n为二叉树的结点个数
+    //算法执行后返回构造二叉链的根结点
+    /********** Begin **********/
+    BTNode *b;
+    char *p;
+    int k;
+    if(n<=0)
+    return NULL;
+    b=(BTNode *)malloc(sizeof(BTNode));
+    b->data=*pre;
+    for(p=in;p<in+n;p++)
+        if(*p==*pre)
+            break;
+    k=p-in;
+    b->lchild=CreateBT1(pre+1,in,k);
+    b->rchild=CreateBT1(pre+k+1,p+1,n-1-k);
+    return b;
+    /********** End **********/
+}
+//由中序序列和后序序列构造二叉树
+BTNode *CreateBT2(char *post,char *in,int n)
+{
+    //post存放后序序列，in存放中序序列，n为二叉树的结点个数
+    //算法执行后返回构造二叉链的根结点
+    /********** Begin **********/
+    BTNode *b;
+    char r,*p;
+    int k;
+    if (n<=0) 
+    return NULL;
+    r=*(post+n-1);
+    b=(BTNode *)malloc(sizeof(BTNode));
+    b->data=r;
+    for(p=in;p<in+n;p++)
+        if(*p==r)
+            break;
+    k=p-in;
+    b->lchild=CreateBT2(post,in,k);
+    b->rchild=CreateBT2(post+k,p+1,n-k-1);
+    return b;
+    /********** End **********/
+}
+
+
+第6关
+
+//中序线索化二叉树
+TBTNode *CreateThread(TBTNode *b)
+{
+    /********** Begin **********/
+    TBTNode *root;
+    root=(TBTNode *)malloc(sizeof(TBTNode));        //创建根结点
+    root->ltag=0;
+    root->rtag=1;
+    root->rchild=b;
+    if(b == NULL)       //空二叉树
+        root->lchild=root;
+    else{
+        root->lchild=b;
+        pre=root;
+        Thread(b);
+        pre->rchild=root;
+        pre->rtag=1;
+        root->rchild=pre;
+    }
+    return root;
+    /********** End **********/
+}
+
+
+第7关
+
+BDACC
+
+第8关
+
+//将x和y所在的子树合并
+void UNION(UFSTree t[],int x,int y)
+{
+    /********** Begin **********/
+    x=FIND_SET(t,x);        //查找x所在分离集合树的编号
+    y=FIND_SET(t,y);        //查找y所在分离集合树的编号
+    if(t[x].rank > t[y].rank){
+        t[y].parent=x;
+    }else{
+        t[x].parent=y;
+        if(t[x].rank == t[y].rank){
+            t[y].rank++;
+        }
+    }
+    /********** End **********/
+}
+
+
+第9关
+
+void CreateHT(HTNode ht[],int n)
+{
+    int i,k,lnode,rnode;
+    double min1,min2;
+    for (i=0;i<2*n-1;i++)            /*所有结点的相关域置初值-1*/
+        ht[i].parent=ht[i].lchild=ht[i].rchild=-1;
+    for (i=n;i<2*n-1;i++)            /*构造哈夫曼树*/
+    {
+        /********** Begin **********/
+        min1=6666;min2=6666;
+        lnode=-1;rnode=-1;
+        for(k=0;k<=i-1;k++)
+            if(ht[k].parent == -1){
+                if(ht[k].weight < min1){
+                    min2=min1;rnode=lnode;
+                    min1=ht[k].weight;
+                    lnode=k;
+                }else if(ht[k].weight < min2){
+                    min2=ht[k].weight;
+                    rnode=k;
+                }
+            }
+            ht[lnode].parent=i;ht[rnode].parent=i;
+            ht[i].weight=ht[lnode].weight+ht[rnode].weight;
+			ht[i].lchild=lnode;ht[i].rchild=rnode;
+        /********** End **********/
+    }
+}
+void CreateHCode(HTNode ht[],HCode hcd[],int n)
+{
+    int i,f,c;
+    HCode hc;
+    for (i=0;i<n;i++)    /*根据哈夫曼树求哈夫曼编码*/
+    {
+        hc.start=n;c=i;
+        f=ht[i].parent;
+        while (f!=-1)    /*循序直到树根结点*/
+        {
+            /********** Begin **********/
+            if(ht[f].lchild==c)
+				hc.cd[hc.start--]='0';
+			else               
+				hc.cd[hc.start--]='1';
+			c=f;f=ht[f].parent;
+            /********** End **********/
+        }
+        hc.start++;        /*start指向哈夫曼编码最开始字符*/
+        hcd[i]=hc;
+    }
+}
+
+
+第10关
+
+/********** Begin **********/
+        q[i]++;                             
+		while (q[i]<=n&&!place(i)) {         
+			q[i]++;
+		}
+		if (q[i]<=n) {                       
+			if (i==n) {                    
+				dispsolution(n);            
+			}
+			else {                          
+				i++;                        
+				q[i] = 0;                  
+			}
+ 
+		}
+		else {
+			i--;                             
+		}
+        /********** End **********/
+
+
+
+第11关
+
+/********** Begin **********/
+long long dp[1001];
+const int MOD = 1e9 + 7;
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int m =2*n;
+    dp[0]=1;
+    for(int i=0; i<m; ++i){
+        for(int j=n; j>=1; --j){
+            dp[j]=(dp[j] + dp[j-1]) % MOD;
+        }
+    }
+
+    printf("%d",dp[n]/(n+1));
+
+}
+/********** End **********/
