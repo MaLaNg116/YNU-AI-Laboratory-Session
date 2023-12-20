@@ -97,7 +97,7 @@ def get_naive_bayes(pca_dim):
             }
             return jsonify(response), 400
         try:
-            predict = Algorithms().naive_bayes(from_user)
+            predict = Algorithms(pca_dim=int(pca_dim) if pca_dim is not None else None).naive_bayes(from_user)
             response = {
                 'code': 200,
                 'msg': 'success',
@@ -160,7 +160,7 @@ def get_decision_tree(pca_dim):
             }
             return jsonify(response), 400
         try:
-            predict = Algorithms().decision_tree(from_user)
+            predict = Algorithms(pca_dim=int(pca_dim) if pca_dim is not None else None).decision_tree(from_user)
             response = {
                 'code': 200,
                 'msg': 'success',
@@ -223,7 +223,7 @@ def get_random_forest(pca_dim):
             }
             return jsonify(response), 400
         try:
-            predict = Algorithms().random_forest(from_user)
+            predict = Algorithms(pca_dim=int(pca_dim) if pca_dim is not None else None).random_forest(from_user)
             response = {
                 'code': 200,
                 'msg': 'success',
@@ -286,7 +286,7 @@ def get_svm(pca_dim):
             }
             return jsonify(response), 400
         try:
-            predict = Algorithms().svm_model(from_user)
+            predict = Algorithms(pca_dim=int(pca_dim) if pca_dim is not None else None).svm_model(from_user)
             response = {
                 'code': 200,
                 'msg': 'success',
@@ -351,7 +351,7 @@ def get_mlp(pca_dim):
             }
             return jsonify(response), 400
         try:
-            predict = Algorithms().mlp(from_user)
+            predict = Algorithms(pca_dim=int(pca_dim) if pca_dim is not None else None).mlp(from_user)
             response = {
                 'code': 200,
                 'msg': 'success',
